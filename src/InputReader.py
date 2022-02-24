@@ -1,6 +1,6 @@
 from .Contributor import Contributor
 from .Project import Project
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
 
 class InputReader:
 
@@ -62,7 +62,7 @@ class InputReader:
 
                 idx+=1
 
-                skill_dict = {}
+                skill_dict = OrderedDict()
                 for _ in range(nr_roles):
                     curr_line = lines[idx].split()
 

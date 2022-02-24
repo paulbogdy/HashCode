@@ -1,4 +1,3 @@
-
 def checkPossibleProject(project, conts):
 
     conts_assigend = []
@@ -8,12 +7,9 @@ def checkPossibleProject(project, conts):
         # skills and if it can be added to project
         for projSkill in project.skills:
             if cont.skills[projSkill] >= project.skills[projSkill]:
-                cont.skills[projSkill] += 1
-                conts_assigend.append(cont)
+                conts_assigend.append((projSkill, cont))
+                break
 
     return conts_assigend
             
 
-if __name__ == "__main__":
-    pass
-    
