@@ -62,7 +62,7 @@ class InputReader:
 
                 idx+=1
 
-                skill_dict = OrderedDict()
+                skill_dict = []
                 for _ in range(nr_roles):
                     curr_line = lines[idx].split()
 
@@ -71,7 +71,7 @@ class InputReader:
                     
                     skill_level = int(curr_line[1])
                     
-                    skill_dict[skill_name] = skill_level
+                    skill_dict.append((skill_name, skill_level))
 
                     idx+=1
                 

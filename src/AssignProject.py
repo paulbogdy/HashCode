@@ -1,5 +1,5 @@
 from src.CheckProject import checkPossibleProject
-
+import copy
 
 def assign_retry_strategy(contributors, projects):
     not_assigned = []
@@ -12,14 +12,15 @@ def assign_retry_strategy(contributors, projects):
             # change function name
             assigned_contributors = checkPossibleProject(project, contributors)
             if len(assigned_contributors) == len(project.skills):
-                contr = project.skills
-                for (skill, cont) in assigned_contributors:
-                    contr[skill] = cont.name
-                    cont.improve_skill(skill)
+                contr = [None]*len(assigned_contributors)
+                for (skill, cont, i, level) in assigned_contributors:
+                    contr[i] = cont.name
+                    if cont.skills[skill] <= level:
+                        cont.improve_skill(skill)
                 project_cont.append((project.name, contr))
                 change = True
             else:
                 not_assigned.append(project)
-        projects = not_assigned
+        projects = copy.deepcopy(not_assigned)
     return project_cont
 
